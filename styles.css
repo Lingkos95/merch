@@ -1,0 +1,241 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    text-align: center;
+    background-color: rgb(159, 159, 159);
+    overflow-x: hidden;
+    color: azure;
+}
+
+body h1 {
+    padding-top: 35px;
+    text-decoration: underline;
+    text-shadow: 2px 2px 5px rgba(247,205,87,255); 
+}
+
+.header {
+    overflow: hidden;
+    position: relative;
+    height: 70vh;
+}
+
+.header img {
+    width: 100%;
+    margin: 0 -30px 0 -30px;
+    height: auto;
+    object-fit: cover;      
+}
+
+/*This if for the Navigation bar*/
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: rgb(49, 48, 48);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.navlogo
+{
+    margin-right: auto;
+    margin-left: -216px;
+    transform: scale(0.1);
+
+}
+
+.navbar a {
+    color: rgba(255, 255, 255, 1);
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+/* change when merch pictures are available
+This is for the carousel
+*/
+.carousel {
+
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    width: 300%;
+    display: flex;
+    animation: carousel-animation 15s infinite;
+    position: relative;
+
+    & img{
+        width: calc(50% / 3);
+        height: 50%;
+        object-fit: cover;
+
+    }
+}
+
+@keyframes carousel-animation {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-33.33%); }
+    66% { transform: translateX(-66.66%); }
+    100% { transform: translateX(0); }
+}
+
+
+.navbar a:hover {
+    background-color: rgb(104, 3, 3);
+    color: rgb(255, 255, 255);
+}
+
+.info {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+.infoBg img {
+    position: absolute;
+    right: 81%;
+    top: -25%;
+}
+
+.left {
+    height: 300px;
+    width: 500px;
+    text-align: left;
+    padding-right: 7%;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 100px;
+    height: 300px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+  }
+
+.right img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100px;
+    display: block;
+    transition: transform 0.5s ease;
+}
+  
+.right:hover img {
+    transform: scale(1.7);
+}
+  
+.overlaytext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: black;
+    font-size: 1.6rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5 ease;
+    transform: translate(-50%, -50%);
+}
+
+.right:hover .overlaytext {
+    opacity: 1;
+}
+
+/*This if for the hovering over picture*/
+.img{
+    position: relative;
+    width: 400px;
+    margin-left: 20px;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.img_sleeve{
+    display: block;
+    width: 100%; 
+}
+
+.img_overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.img_overlay--blur{
+    backdrop-filter: blur(5px);
+}
+
+.img_overlay > * {
+    transform: translateY(20px);
+    transition: transform 0.25s;
+}
+
+.img_overlay:hover{
+    opacity: 1;
+}
+
+.img_overlay:hover > * {
+    transform: translateY(0);
+} 
+
+.img:hover .img_overlay{
+    opacity: 1;
+}
+
+.img_title{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.img_disc{
+    font-size: 1.25em;
+    margin-top: 0.25em;
+}
+
+/* Products grid for More section */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+}
+
+/* Neutralize left offset when inside products grid */
+.products .img {
+    margin-left: 0;
+}
